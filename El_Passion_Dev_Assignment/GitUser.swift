@@ -12,10 +12,16 @@ class GitUser {
     
     var NAME = ""
     var ID = 0
+    var AVATAR = ""
+    var FOLLOWERS = ""
+    var STARRED = ""
     
-    init(login:String, id: Int){
+    init(login:String, id: Int, avatarurl: String, followersurl: String, starredurl: String){
         self.NAME = login
         self.ID = id
+        self.AVATAR = avatarurl
+        self.FOLLOWERS = followersurl
+        self.STARRED = starredurl
     }
     
 }

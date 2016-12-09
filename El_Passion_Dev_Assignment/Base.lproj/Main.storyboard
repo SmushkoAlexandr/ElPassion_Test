@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,11 +36,66 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="HdR-fJ-MGi"/>
                     <connections>
                         <outlet property="mTableView" destination="R3z-Ap-yN4" id="Tgc-tX-tiv"/>
+                        <segue destination="oBc-W6-w1g" kind="show" identifier="InfoViewSegue" id="uFm-wb-HqO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frT-CK-waF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-235"/>
+            <point key="canvasLocation" x="-154" y="-235"/>
+        </scene>
+        <!--Info View-->
+        <scene sceneID="km9-t4-nLM">
+            <objects>
+                <viewController id="oBc-W6-w1g" customClass="InfoView" customModule="El_Passion_Dev_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kRJ-PH-zeH"/>
+                        <viewControllerLayoutGuide type="bottom" id="vQq-Eu-XBU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KcT-1E-hgN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="enA-QY-laM">
+                                <rect key="frame" x="67" y="72" width="240" height="193"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="193" id="cnr-rS-HP6"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cwK-wb-OWA">
+                                <rect key="frame" x="0.0" y="423" width="375" height="244"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="244" id="M3j-2W-2I7"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XL-Vo-RY4">
+                                <rect key="frame" x="128" y="273" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cwK-wb-OWA" secondAttribute="trailing" id="1A6-bR-StQ"/>
+                            <constraint firstItem="cwK-wb-OWA" firstAttribute="leading" secondItem="KcT-1E-hgN" secondAttribute="leading" id="3k6-Rb-6Qs"/>
+                            <constraint firstItem="enA-QY-laM" firstAttribute="top" secondItem="kRJ-PH-zeH" secondAttribute="bottom" constant="8" symbolic="YES" id="CkY-6H-3DD"/>
+                            <constraint firstItem="4XL-Vo-RY4" firstAttribute="top" secondItem="enA-QY-laM" secondAttribute="bottom" constant="8" symbolic="YES" id="Dw0-Di-h7k"/>
+                            <constraint firstItem="4XL-Vo-RY4" firstAttribute="centerX" secondItem="cwK-wb-OWA" secondAttribute="centerX" id="Fuk-BF-Wth"/>
+                            <constraint firstItem="enA-QY-laM" firstAttribute="centerX" secondItem="4XL-Vo-RY4" secondAttribute="centerX" id="mja-ga-Hho"/>
+                            <constraint firstItem="cwK-wb-OWA" firstAttribute="bottom" secondItem="vQq-Eu-XBU" secondAttribute="top" id="v3P-bz-rUC"/>
+                            <constraint firstItem="enA-QY-laM" firstAttribute="leading" secondItem="KcT-1E-hgN" secondAttribute="leadingMargin" constant="51" id="wRs-Lb-iA2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgAvatar" destination="enA-QY-laM" id="xqY-El-GJt"/>
+                        <outlet property="lblName" destination="4XL-Vo-RY4" id="GyH-D0-Ckw"/>
+                        <outlet property="tbvFollowers" destination="cwK-wb-OWA" id="4hK-7z-9lw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUx-p9-Zjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672.79999999999995" y="-236.13193403298354"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q1q-gD-d2f">
