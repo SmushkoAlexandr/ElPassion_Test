@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		D20100B4E2BD858FB517D1BE /* Pods_El_Passion_Dev_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5CC0ADFEBCC0CBD4CC2C83 /* Pods_El_Passion_Dev_Assignment.framework */; };
 		FACDE2B41DFB030E00A40053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2B31DFB030E00A40053 /* AppDelegate.swift */; };
-		FACDE2B61DFB030E00A40053 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2B51DFB030E00A40053 /* ViewController.swift */; };
 		FACDE2B91DFB030E00A40053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACDE2B71DFB030E00A40053 /* Main.storyboard */; };
 		FACDE2BB1DFB030E00A40053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACDE2BA1DFB030E00A40053 /* Assets.xcassets */; };
 		FACDE2BE1DFB030F00A40053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACDE2BC1DFB030F00A40053 /* LaunchScreen.storyboard */; };
 		FACDE2C91DFB030F00A40053 /* El_Passion_Dev_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2C81DFB030F00A40053 /* El_Passion_Dev_AssignmentTests.swift */; };
 		FACDE2D41DFB030F00A40053 /* El_Passion_Dev_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2D31DFB030F00A40053 /* El_Passion_Dev_AssignmentUITests.swift */; };
 		FACDE2E21DFB0B1600A40053 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACDE2E11DFB0B1600A40053 /* Alamofire.framework */; };
+		FACDE2E41DFB0FD900A40053 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2E31DFB0FD900A40053 /* MainView.swift */; };
+		FACDE2E61DFB102900A40053 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2E51DFB102900A40053 /* GitUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,6 @@
 		ED5CC0ADFEBCC0CBD4CC2C83 /* Pods_El_Passion_Dev_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_El_Passion_Dev_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACDE2B01DFB030E00A40053 /* El_Passion_Dev_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = El_Passion_Dev_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACDE2B31DFB030E00A40053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FACDE2B51DFB030E00A40053 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FACDE2B81DFB030E00A40053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FACDE2BA1DFB030E00A40053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FACDE2BD1DFB030F00A40053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		FACDE2D31DFB030F00A40053 /* El_Passion_Dev_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = El_Passion_Dev_AssignmentUITests.swift; sourceTree = "<group>"; };
 		FACDE2D51DFB030F00A40053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FACDE2E11DFB0B1600A40053 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		FACDE2E31DFB0FD900A40053 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FACDE2E51DFB102900A40053 /* GitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				FACDE2B31DFB030E00A40053 /* AppDelegate.swift */,
-				FACDE2B51DFB030E00A40053 /* ViewController.swift */,
 				FACDE2B71DFB030E00A40053 /* Main.storyboard */,
 				FACDE2BA1DFB030E00A40053 /* Assets.xcassets */,
 				FACDE2BC1DFB030F00A40053 /* LaunchScreen.storyboard */,
 				FACDE2BF1DFB030F00A40053 /* Info.plist */,
+				FACDE2E31DFB0FD900A40053 /* MainView.swift */,
+				FACDE2E51DFB102900A40053 /* GitUser.swift */,
 			);
 			path = El_Passion_Dev_Assignment;
 			sourceTree = "<group>";
@@ -339,8 +342,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACDE2B61DFB030E00A40053 /* ViewController.swift in Sources */,
+				FACDE2E61DFB102900A40053 /* GitUser.swift in Sources */,
 				FACDE2B41DFB030E00A40053 /* AppDelegate.swift in Sources */,
+				FACDE2E41DFB0FD900A40053 /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
