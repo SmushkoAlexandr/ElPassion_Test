@@ -12,17 +12,11 @@ class GitObject {
     
     var NAME = ""
     var ID = 0
-    var AVATAR = ""
-    var FOLLOWERS = ""
-    var STARRED = ""
     var USER = true
     
-    init(login:String, id: Int, avatarurl: String, followersurl: String, starredurl: String){
+    init(login:String, id: Int){
         self.NAME = login
         self.ID = id
-        self.AVATAR = avatarurl
-        self.FOLLOWERS = followersurl
-        self.STARRED = starredurl
         self.USER = true
     }
     

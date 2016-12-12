@@ -80,9 +80,6 @@ class MainView: UITableViewController, UISearchBarDelegate {
             //(mTableView.indexPathForSelectedRow?.row)!
             //infoVc.lblName.text = items[ind!].NAME
             infoVc.name = items[ind!].NAME
-            infoVc.avatar = items[ind!].AVATAR
-            infoVc.followers = items[ind!].FOLLOWERS
-            infoVc.stars = items[ind!].STARRED
         }
     }
     
@@ -98,12 +95,8 @@ class MainView: UITableViewController, UISearchBarDelegate {
                     for anItem in items as! [Dictionary<String, AnyObject>] {
                         let personName = anItem["login"] as! String
                         let personId = anItem["id"] as! Int
-                        let personAvatar = anItem["avatar_url"] as! String
-                        let personFollowers = anItem["followers_url"] as! String
-                        let personStarred = anItem["starred_url"] as! String
                         
-                        self.items.append(GitObject(login: personName, id: personId, avatarurl: personAvatar,
-                                                  followersurl: personFollowers, starredurl: personStarred))
+                        self.items.append(GitObject(login: personName, id: personId))
                     }
                     self.items.sort{
                         $0.ID < $1.ID
