@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D20100B4E2BD858FB517D1BE /* Pods_El_Passion_Dev_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5CC0ADFEBCC0CBD4CC2C83 /* Pods_El_Passion_Dev_Assignment.framework */; };
+		FA1E32A11DFEAB25005A175F /* GitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E32A01DFEAB25005A175F /* GitObject.swift */; };
 		FACDE2B41DFB030E00A40053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2B31DFB030E00A40053 /* AppDelegate.swift */; };
 		FACDE2B91DFB030E00A40053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACDE2B71DFB030E00A40053 /* Main.storyboard */; };
 		FACDE2BB1DFB030E00A40053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACDE2BA1DFB030E00A40053 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		FACDE2D41DFB030F00A40053 /* El_Passion_Dev_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2D31DFB030F00A40053 /* El_Passion_Dev_AssignmentUITests.swift */; };
 		FACDE2E21DFB0B1600A40053 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACDE2E11DFB0B1600A40053 /* Alamofire.framework */; };
 		FACDE2E41DFB0FD900A40053 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2E31DFB0FD900A40053 /* MainView.swift */; };
-		FACDE2E61DFB102900A40053 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2E51DFB102900A40053 /* GitUser.swift */; };
 		FACDE2E81DFB1F6300A40053 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACDE2E71DFB1F6300A40053 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,7 @@
 		444C1B14533CA64155CE0955 /* Pods-El_Passion_Dev_Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El_Passion_Dev_Assignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-El_Passion_Dev_Assignment/Pods-El_Passion_Dev_Assignment.release.xcconfig"; sourceTree = "<group>"; };
 		820B7C19E8375F790084FEFC /* Pods-El_Passion_Dev_Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El_Passion_Dev_Assignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-El_Passion_Dev_Assignment/Pods-El_Passion_Dev_Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5CC0ADFEBCC0CBD4CC2C83 /* Pods_El_Passion_Dev_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_El_Passion_Dev_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1E32A01DFEAB25005A175F /* GitObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitObject.swift; sourceTree = "<group>"; };
 		FACDE2B01DFB030E00A40053 /* El_Passion_Dev_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = El_Passion_Dev_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACDE2B31DFB030E00A40053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FACDE2B81DFB030E00A40053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		FACDE2D51DFB030F00A40053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FACDE2E11DFB0B1600A40053 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		FACDE2E31DFB0FD900A40053 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		FACDE2E51DFB102900A40053 /* GitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
 		FACDE2E71DFB1F6300A40053 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +135,7 @@
 				FACDE2BC1DFB030F00A40053 /* LaunchScreen.storyboard */,
 				FACDE2BF1DFB030F00A40053 /* Info.plist */,
 				FACDE2E31DFB0FD900A40053 /* MainView.swift */,
-				FACDE2E51DFB102900A40053 /* GitUser.swift */,
+				FA1E32A01DFEAB25005A175F /* GitObject.swift */,
 				FACDE2E71DFB1F6300A40053 /* InfoView.swift */,
 			);
 			path = El_Passion_Dev_Assignment;
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACDE2E81DFB1F6300A40053 /* InfoView.swift in Sources */,
-				FACDE2E61DFB102900A40053 /* GitUser.swift in Sources */,
+				FA1E32A11DFEAB25005A175F /* GitObject.swift in Sources */,
 				FACDE2B41DFB030E00A40053 /* AppDelegate.swift in Sources */,
 				FACDE2E41DFB0FD900A40053 /* MainView.swift in Sources */,
 			);

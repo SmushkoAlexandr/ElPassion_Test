@@ -15,7 +15,7 @@ class MainView: UITableViewController, UISearchBarDelegate {
     @IBOutlet var mTableView: UITableView!
     var searchBar = UISearchBar()
     
-    var items: [GitUser] = []
+    var items: [GitObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class MainView: UITableViewController, UISearchBarDelegate {
     
     func createSearchBar() -> Void {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Type to find"
+        searchBar.placeholder = "Search..."
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
@@ -54,17 +54,22 @@ class MainView: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+                let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle,reuseIdentifier: "cell")
         
         cell.textLabel?.text = self.items[indexPath.row].NAME
+        cell.detailTextLabel?.text = ("User == " + "\(self.items[indexPath.row].USER)")
+
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-        print(items[indexPath.row].ID)
-        self.performSegue(withIdentifier: "InfoViewSegue", sender: nil)
+        if(items[indexPath.row].USER){
+            print("You selected cell #\(indexPath.row)!")
+            print(items[indexPath.row].ID)
+            self.performSegue(withIdentifier: "InfoViewSegue", sender: nil)
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,12 +88,12 @@ class MainView: UITableViewController, UISearchBarDelegate {
     
     func createRequest(query: String)
     {
-        //TODO
+        self.items = []
+        //TODO repositories
         Alamofire.request("https://api.github.com/search/users?q=" + query).responseJSON {
             responce in
             if let JSON = responce.result.value {
                 print("JSON:  \(JSON)")
-                self.items = []
                 if let items = (JSON as! [String: Any])["items"]{
                     for anItem in items as! [Dictionary<String, AnyObject>] {
                         let personName = anItem["login"] as! String
@@ -97,8 +102,27 @@ class MainView: UITableViewController, UISearchBarDelegate {
                         let personFollowers = anItem["followers_url"] as! String
                         let personStarred = anItem["starred_url"] as! String
                         
-                        self.items.append(GitUser(login: personName, id: personId, avatarurl: personAvatar,
+                        self.items.append(GitObject(login: personName, id: personId, avatarurl: personAvatar,
                                                   followersurl: personFollowers, starredurl: personStarred))
+                    }
+                    self.items.sort{
+                        $0.ID < $1.ID
+                    }
+                    self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
+                }
+            }
+        }
+        
+        Alamofire.request("https://api.github.com/search/repositories?q=" + query).responseJSON {
+            responce in
+            if let JSON = responce.result.value {
+                print("JSON:  \(JSON)")
+                if let items = (JSON as! [String: Any])["items"]{
+                    for anItem in items as! [Dictionary<String, AnyObject>] {
+                        let personName = anItem["name"] as! String
+                        let personId = anItem["id"] as! Int
+                        
+                        self.items.append(GitObject(title: personName, id: personId))
                     }
                     self.items.sort{
                         $0.ID < $1.ID
