@@ -19,12 +19,15 @@ class InfoView: UIViewController {
     
     var name: String = ""
     var stars: String = ""
-    var num = 100
+    //var num: Int = 0
+   // var count: Int = 0
+    var page: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userInfoRequest()
-        starredRequest(page: 1)
+        starredRequest()
+        
     }
     
     func userInfoRequest()
@@ -41,19 +44,21 @@ class InfoView: UIViewController {
         }
     }
     
-    func starredRequest(page: Int)
+    func starredRequest()
     {
-
-        Alamofire.request("https://api.github.com/users/" + name + "/starred?per_page=100&page=" + String(page)).responseJSON {
-            response in
-            if let JSON = response.result.value {
-                let response = JSON as! NSArray
-                self.num = response.count
-                print(String(self.num))
-                self.lblStars.text = "Starred: " + String(self.num)
+        //repeat{
+            Alamofire.request("https://api.github.com/users/" + name + "/starred?per_page=100&page=" + String(self.page)).responseJSON {
+                response in
+                if let JSON = response.result.value {
+                    let response = JSON as! NSArray
+                    //self.count = response.count
+                    //self.num = self.num + self.count
+                    self.lblStars.text = "Starred: " + String(response.count)
+                }
             }
-        }
-
+            //self.page += 1
+        //}
+            //while count != 5
     }
     
     func loadAvatar(url: String){
