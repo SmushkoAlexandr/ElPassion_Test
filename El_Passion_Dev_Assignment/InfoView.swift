@@ -19,24 +19,41 @@ class InfoView: UIViewController {
     
     var name: String = ""
     var stars: String = ""
+    var num = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        followersRequest()
+        userInfoRequest()
+        starredRequest(page: 1)
     }
     
-    func followersRequest()
+    func userInfoRequest()
     {
         Alamofire.request("https://api.github.com/users/" + name).responseJSON {
-            responce in
-            if let JSON = responce.result.value {
+            response in
+            if let JSON = response.result.value {
+                print("JSON:  \(JSON)")
                 let response = JSON as! NSDictionary
                 self.loadAvatar(url: (response.object(forKey: "avatar_url") as? String)!)
                 self.lblFoll.text = "Followers: " + String(describing: response.object(forKey: "followers") as! Int)
                 self.lblName.text = response.object(forKey: "login") as? String
             }
         }
+    }
+    
+    func starredRequest(page: Int)
+    {
+
+        Alamofire.request("https://api.github.com/users/" + name + "/starred?per_page=100&page=" + String(page)).responseJSON {
+            response in
+            if let JSON = response.result.value {
+                let response = JSON as! NSArray
+                self.num = response.count
+                print(String(self.num))
+                self.lblStars.text = "Starred: " + String(self.num)
+            }
+        }
+
     }
     
     func loadAvatar(url: String){

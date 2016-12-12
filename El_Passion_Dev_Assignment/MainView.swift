@@ -57,7 +57,7 @@ class MainView: UITableViewController, UISearchBarDelegate {
                 let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle,reuseIdentifier: "cell")
         
         cell.textLabel?.text = self.items[indexPath.row].NAME
-        cell.detailTextLabel?.text = ("User == " + "\(self.items[indexPath.row].USER)")
+        cell.detailTextLabel?.text = ("User = " + "\(self.items[indexPath.row].USER)")
 
         
         return cell
@@ -88,8 +88,8 @@ class MainView: UITableViewController, UISearchBarDelegate {
         self.items = []
         //TODO repositories
         Alamofire.request("https://api.github.com/search/users?q=" + query).responseJSON {
-            responce in
-            if let JSON = responce.result.value {
+            response in
+            if let JSON = response.result.value {
                 print("JSON:  \(JSON)")
                 if let items = (JSON as! [String: Any])["items"]{
                     for anItem in items as! [Dictionary<String, AnyObject>] {
@@ -107,8 +107,8 @@ class MainView: UITableViewController, UISearchBarDelegate {
         }
         
         Alamofire.request("https://api.github.com/search/repositories?q=" + query).responseJSON {
-            responce in
-            if let JSON = responce.result.value {
+            response in
+            if let JSON = response.result.value {
                 print("JSON:  \(JSON)")
                 if let items = (JSON as! [String: Any])["items"]{
                     for anItem in items as! [Dictionary<String, AnyObject>] {
