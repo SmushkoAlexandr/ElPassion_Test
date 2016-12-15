@@ -25,7 +25,6 @@ class MainView: UITableViewController, UISearchBarDelegate {
         self.mTableView.dataSource = self
         
         createSearchBar()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,28 +36,27 @@ class MainView: UITableViewController, UISearchBarDelegate {
         searchBar.placeholder = "Search..."
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
-    }
 
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchBar.text != ""){
             createRequest(query: searchBar.text!)
-        }else{
+        }else {
             items = []
             self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
         }
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle,reuseIdentifier: "cell")
-        
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle,reuseIdentifier: "cell")
         cell.textLabel?.text = self.items[indexPath.row].NAME
         cell.detailTextLabel?.text = ("User = " + "\(self.items[indexPath.row].USER)")
-
         
         return cell
     }
@@ -69,14 +67,13 @@ class MainView: UITableViewController, UISearchBarDelegate {
             print(items[indexPath.row].ID)
             self.performSegue(withIdentifier: "InfoViewSegue", sender: nil)
         }
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "InfoViewSegue"){
             let infoVc = segue.destination as! InfoView
             
-           let ind = mTableView.indexPathForSelectedRow?.row
+            let ind = mTableView.indexPathForSelectedRow?.row
             //(mTableView.indexPathForSelectedRow?.row)!
             //infoVc.lblName.text = items[ind!].NAME
             infoVc.name = items[ind!].NAME
@@ -91,17 +88,27 @@ class MainView: UITableViewController, UISearchBarDelegate {
             response in
             if let JSON = response.result.value {
                 print("JSON:  \(JSON)")
-                if let items = (JSON as! [String: Any])["items"]{
-                    for anItem in items as! [Dictionary<String, AnyObject>] {
-                        let personName = anItem["login"] as! String
-                        let personId = anItem["id"] as! Int
+                
+                let limitResponse = JSON as! NSDictionary
+                if limitResponse["message"] != nil
+                {
+                    self.alertShow(title: "Error", message: (limitResponse["message"] as! String), titleOk: "Ok")
+                }
+                    
+                else{
+                    if let items = (JSON as! [String: Any])["items"]{
                         
-                        self.items.append(GitObject(login: personName, id: personId))
+                        for anItem in items as! [Dictionary<String, AnyObject>] {
+                            let personName = anItem["login"] as! String
+                            let personId = anItem["id"] as! Int
+                            
+                            self.items.append(GitObject(login: personName, id: personId))
+                        }
+                        self.items.sort{
+                            $0.ID < $1.ID
+                        }
+                        self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
                     }
-                    self.items.sort{
-                        $0.ID < $1.ID
-                    }
-                    self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
                 }
             }
         }
@@ -110,20 +117,33 @@ class MainView: UITableViewController, UISearchBarDelegate {
             response in
             if let JSON = response.result.value {
                 print("JSON:  \(JSON)")
-                if let items = (JSON as! [String: Any])["items"]{
-                    for anItem in items as! [Dictionary<String, AnyObject>] {
-                        let personName = anItem["name"] as! String
-                        let personId = anItem["id"] as! Int
-                        
-                        self.items.append(GitObject(title: personName, id: personId))
+                
+                let limitResponse = JSON as! NSDictionary
+                if limitResponse["message"] == nil
+                {
+                    if let items = (JSON as! [String: Any])["items"]{
+                        for anItem in items as! [Dictionary<String, AnyObject>] {
+                            let personName = anItem["name"] as! String
+                            let personId = anItem["id"] as! Int
+                            
+                            self.items.append(GitObject(title: personName, id: personId))
+                        }
+                        self.items.sort{
+                            $0.ID < $1.ID
+                        }
+                        self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
                     }
-                    self.items.sort{
-                        $0.ID < $1.ID
-                    }
-                    self.mTableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: true)
                 }
             }
         }
     }
+    
+    func alertShow(title: String, message: String, titleOk: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: titleOk, style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
 }
